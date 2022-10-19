@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "AddCustomer";
+}
+<h2>Yeni Müşteri Ekleme</h2>
+<br />
+@using (Html.BeginForm())
+{
+
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="control-label col-md-3">Ad : </label>
+        <div class="col-md-9">
+            @Html.TextBox("FirstName", null, new { @class = "form-control" })
+        </div>
+    </div>
+
+    
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Soyad : </label>
+        <div class="col-md-9">
+            @Html.TextBox("LastName", null, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Telefon : </label>
+        <div class="col-md-9">
+            @Html.TextBox("PhoneNumber", null, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Adres : </label>
+        <div class="col-md-9">
+            @Html.TextArea("Address", null, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Arıza Sebebi : </label>
+        <div class="col-md-9">
+            @Html.TextBox("FaultReason", null, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Kullanılan Malzeme : </label>
+        <div class="col-md-9">
+            @Html.TextBox("UsedMaterial", null, new { @class = "form-control" })
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Açıklama : </label>
+        <div class="col-md-9">
+            @Html.TextArea("Explanation", null, new { @class = "form-control" })
+        </div>
+    </div>
+    <h2>&nbsp;</h2>
+    <div style="display:flex;align-items:center;justify-content:center" class="form-group">
+
+        <button type="submit" class="btn btn-primary">EKLE</button>
+
+    </div>
+
+}
+
+
+

@@ -1,0 +1,76 @@
+﻿@using SamFirstProject.Models
+@model Customer
+@{
+    ViewBag.Title = "CustomerUpdateDetail";
+}
+
+<h2>Müşteri Güncelleme</h2>
+<br />
+@using (Html.BeginForm("CustomerUpdate","Home",FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="control-label col-md-3">Id : </label>
+        <div class="col-md-9">
+            @Html.TextBox("Id", null, new { @class = "form-control ", @readonly = "readonly" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="control-label col-md-3">Ad : </label>
+        <div class="col-md-9">
+            @Html.TextBox("FirstName", null, new { placeholder=Model.FirstName,@class = "form-control " })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Soyad : </label>
+        <div class="col-md-9">
+            @Html.TextBox("LastName", null, new { placeholder = Model.LastName, @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Telefon : </label>
+        <div class="col-md-9">
+            @Html.TextBox("PhoneNumber", null, new { placeholder = Model.PhoneNumber, @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Adres : </label>
+        <div class="col-md-9">
+            @Html.TextArea("Address", null, new { placeholder = Model.Address, @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Arıza Sebebi : </label>
+        <div class="col-md-9">
+            @Html.TextBox("FaultReason", null, new { placeholder = Model.FaultReason, @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Kullanılan Malzeme : </label>
+        <div class="col-md-9">
+            @Html.TextBox("UsedMaterial", null, new { placeholder = Model.UsedMaterial, @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="control-label col-md-3">Açıklama : </label>
+        <div class="col-md-9">
+            @Html.TextArea("Explanation", null, new { placeholder = Model.Explanation, @class = "form-control" })
+        </div>
+    </div>
+    <h2>&nbsp;</h2>
+    <div style="display:flex;align-items:center;justify-content:center" class="form-group">
+
+        <button type="submit" class="btn btn-primary">GÜNCELLE</button>
+        @*@Html.ActionLink("GÜNCELLE","CustomerUpdate","Home",new { @class="btn btn-primary"})*@
+
+    </div>
+
+}

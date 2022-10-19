@@ -1,0 +1,172 @@
+﻿@using SamFirstProject.Models
+@model List<Customer>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<h2>Müşteri Listesi</h2>
+
+<div class="row">
+    <div class="col-md-12 bg-light text-right">
+
+        <button type="button" class="btn btn-primary"><a style="color:white" href="/Home/AddCustomer"><div style="display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined">add</span>Yeni MÜşteri Ekle</div></a></button>
+    </div>
+</div>
+<br />
+<table id="demo1" class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ad</th>
+            <th scope="col">Soyad</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Adres</th>
+            <th scope="col">ArızaSebebi</th>
+            <th scope="col">KullanılanMalzeme</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">SİL</th>
+            <th scope="col">GÜNCELLE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.PhoneNumber</td>
+                <td><textarea style="border-style: none; border-color: Transparent; overflow: auto; ">@item.Address</textarea></td>
+                <td>@item.FaultReason</td>
+                <td>@item.UsedMaterial</td>
+                <td><textarea style="border-style: none; border-color: Transparent; overflow: auto; ">@item.Explanation</textarea></td>
+                @*<td><button class="btn btn-danger" data-toggle="modal" data-target="#modal1">SİL</button></td>*@
+                <td><button class="btn btn-danger"><a href="/Home/CustomerDeleteDetail/@item.Id" style="color:white">SİL</a></button></td>
+                <td><button class="btn btn-success"><a href="/Home/CustomerUpdateDetail/@item.Id" style="color:white">GÜNCELLE</a></button></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+
+
+        @*<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Müşteri Silme</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @using (Html.BeginForm())
+                            {
+
+                                <div class="form-group">
+
+                                    <label for="exampleInputEmail1" class="control-label col-md-3">Ad : </label>
+                                    <div class="col-md-9">
+                                        @Html.TextBox("FirstName",null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="control-label col-md-3">Soyad : </label>
+                                    <div class="col-md-9">
+                                        @Html.TextBox("LastName", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="control-label col-md-3">Telefon : </label>
+                                    <div class="col-md-9">
+                                        @Html.TextBox("PhoneNumber", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="control-label col-md-3">Adres : </label>
+                                    <div class="col-md-9">
+                                        @Html.TextArea("Address", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="control-label col-md-3">Arıza Sebebi : </label>
+                                    <div class="col-md-9">
+                                        @Html.TextBox("FaultReason", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="control-label col-md-3">Kullanılan Malzeme : </label>
+                                    <div class="col-md-9">
+                                        @Html.TextBox("UsedMaterial", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="control-label col-md-3">Açıklama : </label>
+                                    <div class="col-md-9">
+                                        @Html.TextArea("Explanation", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">SİL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">İşlem Başarılı</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Müşteri Silme İşlemi Başarı ile Gerçekleştirildi..
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">SİL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+
+        <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+
+        <script>
+            $('#demo1').dataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+                }
+
+
+            });
+        </script>
